@@ -1,7 +1,7 @@
 import { db } from "@/db";
 import { collectionsTable, type collectionsInsertSchema, type collectionsSelectSchema } from "@/db/schema";
 import type { z } from "zod";
-import { eq } from "drizzle-orm";
+import { eq, ilike } from "drizzle-orm";
 import type { Json } from "drizzle-zod";
 import type { AnySchemaObject } from "ajv";
 import { ulid } from "ulid";
@@ -32,6 +32,10 @@ export const Collection = {
   },
   delete: async (id: string): Promise<void> => {
     await db.delete(collectionsTable).where(eq(collectionsTable.id, id));
+  },
+  search: async (query: string): Promise<CollectionType[]> => {
+    const collections = await db.select().from(collectionsTable).where(ilike(collectionsTable.title, `%${query}%`));
+    return collections;
   },
 };
 

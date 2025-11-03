@@ -9,7 +9,17 @@ export default function Home() {
           Manage your collections and items with JSON schema validation
         </p>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <Link
+            href="/agent"
+            className="block p-6 border rounded-lg hover:shadow-lg transition-shadow bg-blue-50 border-blue-200"
+          >
+            <h2 className="text-2xl font-semibold mb-2">🤖 AI Agent</h2>
+            <p className="text-gray-600">
+              Chat with an AI assistant to manage your collections and items
+            </p>
+          </Link>
+
           <Link
             href="/collections"
             className="block p-6 border rounded-lg hover:shadow-lg transition-shadow"
@@ -23,10 +33,10 @@ export default function Home() {
           <div className="p-6 border rounded-lg bg-gray-50">
             <h2 className="text-2xl font-semibold mb-2">Features</h2>
             <ul className="text-gray-600 space-y-2">
+              <li>• AI-powered assistant</li>
               <li>• JSON Schema validation</li>
               <li>• MinIO object storage</li>
-              <li>• Full-text search with Fuse.js</li>
-              <li>• RESTful API</li>
+              <li>• Full-text search</li>
             </ul>
           </div>
         </div>
